@@ -1,0 +1,11 @@
+.row
+  %h1.page-header Track Activity
+  %div{ "data-object" => "activity", "data-url" => activity_path(@activity) }
+    .form-group
+      = label_tag :name
+      %br/
+      %span{ class: 'form-control rest-in-place', "data-attribute" => "name" }
+    .form-group
+      = label_tag :notes
+      %br/
+      = text_area_tag :notes, nil, class: 'form-control rest-in-place', "data-attribute" => "notes"

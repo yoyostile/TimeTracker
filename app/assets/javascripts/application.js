@@ -15,4 +15,5 @@
 //= require angular
 //= require bootstrap
 //= require turbolinks
+//= require 'rest_in_place'
 //= require_tree .
