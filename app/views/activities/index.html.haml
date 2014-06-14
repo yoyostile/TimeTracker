@@ -21,9 +21,8 @@
           %td.hidden-xs= activity.started_at
           %td.hidden-xs= activity.finished_at
           %td
-            - if activity.finished_at && activity.started_at
-              = ((activity.finished_at - activity.started_at)/3600).to_i
-              h
+            - if activity.finished?
+              = Time.at(activity.duration).utc.strftime("%H:%M:%S")
           %td.hidden-xs= activity.notes
           %td
             - unless activity.finished_at
