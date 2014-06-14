@@ -1,11 +1,13 @@
 .row
   %h1.page-header Track Activity
-  %div{ "data-object" => "activity", "data-url" => activity_path(@activity) }
+  = form_for @activity, html: { method: :put, remote: true } do |f|
     .form-group
-      = label_tag :name
+      = f.label :name
       %br/
-      %span{ class: 'form-control rest-in-place', "data-attribute" => "name" }
+      = f.text_field :name, class: 'form-control', "data-attribute" => "name"
     .form-group
       = label_tag :notes
       %br/
-      = text_area_tag :notes, nil, class: 'form-control rest-in-place', "data-attribute" => "notes"
+      = f.text_area :notes, class: 'form-control', "data-attribute" => "notes"
+    .form-group
+      = f.submit "Save", class: 'btn btn-primary'

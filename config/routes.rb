@@ -56,5 +56,7 @@ Rails.application.routes.draw do
   #   end
 
   root 'activities#index'
-  resources :activities
+  resources :activities do
+    put 'finish'
+  end
 end
