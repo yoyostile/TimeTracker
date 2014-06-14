@@ -20,6 +20,6 @@ test:
   <<: *default
   database: timetracker_test
 
-production:
-  <<: *default
-  database: timetracker
+# production:
+#   <<: *default
+#   database: timetracker
