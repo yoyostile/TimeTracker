@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular
+//= require jquery.ui.autocomplete
+//= require autocomplete-rails
+//= require Chart
 //= require bootstrap
 //= require turbolinks
 //= require_tree .

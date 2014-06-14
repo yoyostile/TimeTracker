@@ -32,8 +32,6 @@
               %li
                 = link_to "Track Activity", new_activity_path
               %li
-                %a{href: "#"} Settings
-              %li
                 = link_to "Log Out", destroy_user_session_path, method: :delete
           - else
             %ul.nav.navbar-nav.navbar-right
@@ -48,11 +46,9 @@
         .col-sm-3.col-md-2.sidebar
           - if current_user
             %ul.nav.nav-sidebar
-              %li.active
-                %a{href: "#"} Overview
-              %li
-                %a{href: "#"} Reports
-              %li
-                %a{href: "#"} Analytics
+              %li{ class: "#{'active' if request.fullpath == activities_path}" }
+                = link_to 'Overview', activities_path
+              %li{ class: "#{'active' if request.fullpath == analytics_path}" }
+                = link_to 'Analytics', analytics_path
         .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
           = yield

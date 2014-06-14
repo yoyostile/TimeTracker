@@ -1,13 +1,17 @@
 .row
   %h1.page-header Track Activity
-  = form_for @activity, html: { method: :put, remote: true } do |f|
+  = form_for @activity, html: { method: :patch, remote: true } do |f|
     .form-group
       = f.label :name
       %br/
-      = f.text_field :name, class: 'form-control', "data-attribute" => "name"
+      = f.text_field :name, class: 'form-control', 'data-attribute' => 'name'
     .form-group
       = label_tag :notes
       %br/
-      = f.text_area :notes, class: 'form-control', "data-attribute" => "notes"
+      = f.text_area :notes, class: 'form-control', 'data-attribute' => 'notes'
     .form-group
-      = f.submit "Save", class: 'btn btn-primary'
+      = label_tag :tags
+      %br/
+      = f.autocomplete_field :tag_list, tags_activities_path, class: 'form-control'
+    .form-group
+      = f.submit 'Save', class: 'btn btn-primary'

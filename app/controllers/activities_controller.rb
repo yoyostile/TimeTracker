@@ -12,7 +12,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity = current_user.activities.create 
+    @activity = current_user.activities.create
     redirect_to edit_activity_path(@activity)
   end
 
@@ -34,14 +34,23 @@ class ActivitiesController < ApplicationController
 
   def finish
     @activity = current_user.activities.find_by_id params[:activity_id]
-    @activity.update_attribute(:finished_at, DateTime.now) unless @activity.finished_at
+    @activity.finish!
     render json: { redirect_to: activities_path }
+  end
+
+  def tags
+    @tags = ActsAsTaggableOn::Tag.where("tags.name ILIKE ?", "%#{params[:term]}%")
+    respond_to do |format|
+      format.json do
+        render json: @tags.collect{ |t| { id: t.id, label: t.name, value: t.name } }
+      end
+    end
   end
 
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :notes)
+    params.require(:activity).permit(:name, :notes, :tag_list)
   end
 
 end

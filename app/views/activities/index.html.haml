@@ -16,7 +16,7 @@
       - @activities.each_with_index do |activity, i|
         %tr
           %td= i+1
-          %td= activity.name
+          %td= link_to activity.name, edit_activity_path(activity)
           %td= activity.tag_list
           %td.hidden-xs= activity.started_at
           %td.hidden-xs= activity.finished_at
@@ -27,7 +27,7 @@
           %td.hidden-xs= activity.notes
           %td
             - unless activity.finished_at
-              = link_to activity_finish_path(activity), method: :put, remote: :true do
+              = link_to activity_finish_path(activity), method: :patch, remote: :true do
                 %i.glyphicon.glyphicon-ok
           %td
             = link_to activity_path(activity), method: :delete, remote: true do
