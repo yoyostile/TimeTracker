@@ -17,7 +17,7 @@
         %tr
           %td= i+1
           %td= link_to activity.name, edit_activity_path(activity)
-          %td= activity.tag_list
+          %td.hidden-xs= activity.tag_list
           %td.hidden-xs= activity.started_at
           %td.hidden-xs= activity.finished_at
           %td
