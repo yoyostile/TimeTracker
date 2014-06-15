@@ -16,6 +16,19 @@ class SmartwatchesController < ActionController::Base
     @activities = current_user.activities
   end
 
+  def analytics
+    @activities = current_user.activities.finished
+    @tags = @activities.map(&:tag_list).flatten.uniq
+    @data = []
+    @tags.each do |tag|
+      @data << {
+        tag: tag,
+        value: @activities.tagged_with(tag).map(&:duration).sum,
+        color: "rgba(#{(rand*255).to_i}, #{(rand*255).to_i}, #{(rand*255).to_i}, 1)"
+      }
+    end
+  end
+
   def start_activity
     current_user.activities.create name: params[:tag], tag_list: params[:tag]
     render json: { redirect_to: smartwatch_path }

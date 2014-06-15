@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resource :smartwatch do
     get :activities
+    get :analytics
     patch :finish
     patch :start_activity
   end
