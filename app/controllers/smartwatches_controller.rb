@@ -1,6 +1,7 @@
 class SmartwatchesController < ActionController::Base
 
   layout 'smartwatch'
+  before_action :authenticate_user!
 
   def show
     @activity = current_user.activities.unfinished.last
