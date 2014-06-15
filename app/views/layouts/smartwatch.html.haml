@@ -23,7 +23,9 @@
               %li= link_to 'Analytics', analytics_smartwatch_path
               - current_user.activities.map(&:tag_list).flatten.uniq.each do |tag|
                 %li
-                  = link_to "Start: #{tag}", start_activity_smartwatch_path(tag: tag), method: :patch, remote: true
+                  = link_to start_activity_smartwatch_path(tag: tag), method: :patch, remote: true do
+                    %span.text-success Start:
+                    = tag
 
       #content
         = yield

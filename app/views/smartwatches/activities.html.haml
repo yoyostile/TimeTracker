@@ -5,6 +5,6 @@
         .pull-left= activity.tag_list || activity.name || 'unknown'
         .pull-right
           - if activity.finished?
-            = Time.at(activity.duration).utc.strftime("%H:%M:%S") 
+            = Time.at(activity.duration).utc.strftime("%H:%M:%S")
           - else
-            = link_to 'Stop!', finish_smartwatch_path(id: activity), class: 'btn btn-primary btn-xs', remote: true, method: :patch
+            = link_to 'Stop!', finish_smartwatch_path(id: activity), class: 'btn btn-danger btn-xs', remote: true, method: :patch
