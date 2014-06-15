@@ -9,7 +9,7 @@
   %ul.list-group.pull-left
     - @data.each do |datum|
       %li.list-group-item{ style: "background-color: #{datum[:color].gsub('1)', '0.4)')}; color: #{datum[:color]}" }
-        = datum[:tag]
+        %span.tag-ellipsis= datum[:tag]
         \-
         = Time.at(datum[:value]).utc.strftime("%H:%M:%S")
 
