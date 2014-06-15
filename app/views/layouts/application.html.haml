@@ -32,6 +32,8 @@
             %ul.nav.navbar-nav.navbar-right
               %li
                 = link_to "Track Activity", new_activity_path
+              %li.visible-xs
+                = link_to 'Analytics', analytics_path
               %li
                 = link_to "Log Out", destroy_user_session_path, method: :delete
           - else
