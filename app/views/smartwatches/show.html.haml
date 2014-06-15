@@ -1,0 +1,14 @@
+- if @activity
+  %center
+    %h3
+      Running activity:
+      = @activity.name || 'noname'
+    %small
+      since:
+      = l(@activity.started_at)
+    %br
+    = link_to 'Stop!', finish_smartwatch_path(id: @activity), class: 'btn btn-primary', method: :patch, remote: true
+- else
+  %center
+    %h3
+      No running activity. Start one, dude!

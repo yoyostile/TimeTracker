@@ -1,0 +1,10 @@
+%ul.list-group
+  - @activities.each do |activity|
+    %li.list-group-item
+      .clearfix
+        .pull-left= activity.tag_list || activity.name || 'unknown'
+        .pull-right
+          - if activity.finished?
+            = Time.at(activity.duration).utc.strftime("%H:%M:%S") 
+          - else
+            = link_to 'Stop!', finish_smartwatch_path(id: activity), class: 'btn btn-primary btn-xs', remote: true, method: :patch

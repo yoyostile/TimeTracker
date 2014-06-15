@@ -5,6 +5,7 @@ class Activity < ActiveRecord::Base
   before_create :set_started_at
 
   scope :finished, -> { where('finished_at IS NOT NULL') }
+  scope :unfinished, -> { where(finished_at: nil) }
 
   def as_json(options={})
     super(only: [ :name, :started_at, :finished_at, :notes ])

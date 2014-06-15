@@ -3,9 +3,17 @@ Rails.application.routes.draw do
 
   root 'activities#index'
   resources :activities do
-    patch 'finish'
+    patch :finish
     get :tags, on: :collection
   end
 
+  resource :smartwatch do
+    get :activities
+    patch :finish
+    patch :start_activity
+  end
+
   get '/analytics' => 'analytics#index'
+  get '/change_layout' => 'smartwatches#change_layout'
 end
+

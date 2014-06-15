@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @activities = current_user.activities
+    @activities = current_user.activities.order(:created_at)
     @activities = @activities.tagged_with(params[:q]) if params[:q].present?
   end
 

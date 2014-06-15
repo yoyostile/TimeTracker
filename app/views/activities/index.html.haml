@@ -6,8 +6,8 @@
         %th #
         %th Name
         %th.hidden-xs Tagged
-        %th.hidden-xs Started at
-        %th.hidden-xs Finished at
+        %th.visible-lg Started at
+        %th.visible-lg Finished at
         %th Duration
         %th.hidden-xs Note
         %th Finish
@@ -18,8 +18,8 @@
           %td= i+1
           %td= link_to activity.name, edit_activity_path(activity)
           %td.hidden-xs= activity.tag_list
-          %td.hidden-xs= activity.started_at
-          %td.hidden-xs= activity.finished_at
+          %td.visible-lg= l(activity.started_at)
+          %td.visible-lg= l(activity.finished_at) if activity.finished_at
           %td
             - if activity.finished?
               = Time.at(activity.duration).utc.strftime("%H:%M:%S")
