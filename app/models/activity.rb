@@ -15,7 +15,7 @@ class Activity < ActiveRecord::Base
   end
 
   def finished?
-    started_at?
+    finished_at?
   end
 
   def finish!
