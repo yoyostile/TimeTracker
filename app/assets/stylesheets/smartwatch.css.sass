@@ -37,6 +37,9 @@
     &.collapse
       display: none!important
   .navbar-nav
+    max-height: 200px
+    overflow: hidden
+    overflow-y: scroll
     float: none!important
     margin: 7.5px -15px
     > li
@@ -44,7 +47,6 @@
       > a
         padding-top: 10px
         padding-bottom: 10px
-  /* since 3.1.0
   .navbar-collapse.collapse.in
     display: block!important
   .collapsing
