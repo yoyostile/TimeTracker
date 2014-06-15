@@ -1,6 +1,11 @@
 .row
-  %canvas#canvas.pull-left{ width: '125', height: '125', style: 'margin-left: 5px;'}
+  %ul.list-group
+    %li.list-group-item
+      Total Time:
+      = Time.at(@activities.map(&:duration).sum).utc.strftime("%H:%M:%S")
 
+.row
+  %canvas#canvas.pull-left{ width: '125', height: '125', style: 'margin-left: 5px;'}
   %ul.list-group.pull-left
     - @data.each do |datum|
       %li.list-group-item{ style: "background-color: #{datum[:color].gsub('1)', '0.4)')}; color: #{datum[:color]}" }
