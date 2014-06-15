@@ -5,7 +5,7 @@
       = @activity.name || 'noname'
     %small
       since:
-      = l(@activity.started_at)
+      = time_ago_in_words @activity.started_at
     %br
     = link_to 'Stop!', finish_smartwatch_path(id: @activity), class: 'btn btn-primary', method: :patch, remote: true
 - else
