@@ -1,14 +1,11 @@
 - if @activity
   %center
     %h4
-      Running activity:
-      %br
       = @activity.name || 'noname'
-    %h2
+      %br
       %small since:
       %br
       = time_ago_in_words @activity.started_at
-    %br
     = link_to 'Stop!', finish_smartwatch_path(id: @activity), class: 'btn btn-danger', method: :patch, remote: true
   :coffee
     $ ->
