@@ -5,16 +5,23 @@
       = Time.at(@activities.map(&:duration).sum).utc.strftime("%H:%M:%S")
 
 .row
-  %canvas#canvas.pull-left{ width: '125', height: '125', style: 'margin-left: 5px;'}
-  %ul.list-group.pull-left
-    - @data.each do |datum|
-      %li.list-group-item{ style: "background-color: #{datum[:color].gsub('1)', '0.4)')}; color: #{datum[:color]}" }
-        %span.tag-ellipsis= datum[:tag]
-        \-
-        = Time.at(datum[:value]).utc.strftime("%H:%M:%S")
+  .col-xs-12
+    %canvas#canvas{ width: '125', height: '125', style: 'margin-left: 25px;'}
+    %ul.list-group
+      - @data.each do |datum|
+        %li.list-group-item{ style: "background-color: #{datum[:color].gsub('1)', '0.4)')}; color: #{datum[:color]}" }
+          %span.tag-ellipsis= datum[:tag]
+          \-
+          = Time.at(datum[:value]).utc.strftime("%H:%M:%S")
 
 :coffee
   $ ->
+    $(document).on 'page:load', renderData
+    renderData()
+
+
+
+  renderData = ->
     data = #{@data.to_json}
     options = {}
     new Chart($("#canvas").get(0).getContext("2d")).Pie(data,options);
