@@ -15,13 +15,14 @@
           = Time.at(datum[:value]).utc.strftime("%H:%M:%S")
 
 :coffee
-  $ ->
-    $(document).on 'page:load', renderData
-    renderData()
-
-
-
   renderData = ->
     data = #{@data.to_json}
     options = {}
     new Chart($("#canvas").get(0).getContext("2d")).Pie(data,options);
+  $ ->
+    $(document).on 'page:load', renderData
+    interval = setInterval ->
+      if renderData
+        renderData()
+        clearInterval(interval)
+    , 100
