@@ -16,3 +16,14 @@
   %center
     %h3
       No running activity. Start one, dude!
+
+:coffee
+  $ ->
+    el = document.getElementById('body')
+    Hammer(el).on 'swipeleft', (event) ->
+      console.log 'swipeleft'
+      Turbolinks.visit "#{analytics_smartwatch_path}"
+    Hammer(el).on 'swiperight', (event) ->
+      console.log 'swiperight'
+      Turbolinks.visit "#{activities_smartwatch_path}"
+

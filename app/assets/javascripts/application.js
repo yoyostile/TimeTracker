@@ -16,5 +16,6 @@
 //= require autocomplete-rails
 //= require Chart
 //= require bootstrap
+//= require hammer
 //= require turbolinks
 //= require_tree .
