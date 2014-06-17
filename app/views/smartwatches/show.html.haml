@@ -7,11 +7,6 @@
       %br
       = time_ago_in_words @activity.started_at
     = link_to 'Stop!', finish_smartwatch_path(id: @activity), class: 'btn btn-danger', method: :patch, remote: true
-  :coffee
-    $ ->
-      setInterval ->
-        Turbolinks.visit window.location
-      , 60000
 - else
   %center
     %h3
