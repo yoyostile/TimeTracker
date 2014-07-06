@@ -11,15 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520184643) do
+ActiveRecord::Schema.define(version: 20140706081101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: true do |t|
     t.string   "name"
-    t.datetime "started_at"
-    t.datetime "finished_at"
     t.text     "notes"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -43,6 +41,14 @@ ActiveRecord::Schema.define(version: 20140520184643) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "time_ranges", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.integer  "activity_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

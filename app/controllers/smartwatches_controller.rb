@@ -12,8 +12,13 @@ class SmartwatchesController < ActionController::Base
     render json: { redirect_to: smartwatch_path }
   end
 
+  def resume
+    @activity = current_user.activities.find_by_id(params[:id]).resume!
+    render json: { redirect_to: smartwatch_path }
+  end
+
   def activities
-    @activities = current_user.activities
+    @activities = current_user.activities.order('created_at desc')
   end
 
   def analytics

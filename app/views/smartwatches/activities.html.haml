@@ -2,9 +2,18 @@
   - @activities.each do |activity|
     %li.list-group-item
       .clearfix
-        .pull-left= activity.tag_list || activity.name || 'unknown'
+        %strong.pull-left= activity.tag_list || activity.name || 'unknown'
         .pull-right
           - if activity.finished?
-            = Time.at(activity.duration).utc.strftime("%H:%M:%S")
+            = link_to resume_smartwatch_path(id: activity), class: 'btn btn-primary', remote: true, method: :patch do
+              %i.glyphicon.glyphicon-play
           - else
-            = link_to 'Stop!', finish_smartwatch_path(id: activity), class: 'btn btn-danger btn-xs', remote: true, method: :patch
+            = link_to finish_smartwatch_path(id: activity), class: 'btn btn-danger', remote: true, method: :patch do
+              %i.glyphicon.glyphicon-pause
+      .clearfix
+        Duration:
+        = Time.at(activity.duration).utc.strftime("%H:%M:%S")
+        Started:
+        = l(activity.started_at, format: :short)
+        Stopped:
+        = l(activity.finished_at, format: :short) if activity.finished?

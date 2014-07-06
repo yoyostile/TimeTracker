@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'activities#index'
   resources :activities do
     patch :finish
+    patch :resume
     get :tags, on: :collection
   end
 
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
     get :activities
     get :analytics
     patch :finish
+    patch :resume
     patch :start_activity
   end
 

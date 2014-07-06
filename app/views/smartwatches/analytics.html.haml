@@ -22,10 +22,9 @@
       $("#canvas").width(125)
       $("#canvas").height(125)
       new Chart($("#canvas").get(0).getContext("2d")).Pie(data,options);
-  $ ->
-    $(document).on 'page:load', renderData
-    interval = setInterval ->
-      if renderData
-        renderData()
-        clearInterval(interval)
-    , 100
+  $(document).on 'page:load', renderData
+  interval = setInterval ->
+    if renderData
+      renderData()
+      clearInterval(interval)
+  , 100

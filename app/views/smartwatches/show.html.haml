@@ -6,7 +6,8 @@
       %small since:
       %br
       = time_ago_in_words @activity.started_at
-    = link_to 'Stop!', finish_smartwatch_path(id: @activity), class: 'btn btn-danger', method: :patch, remote: true
+    = link_to finish_smartwatch_path(id: @activity), class: 'btn btn-danger', method: :patch, remote: true do
+      %i.glyphicon.glyphicon-pause
 - else
   %center
     %h3

@@ -27,7 +27,10 @@
           %td
             - unless activity.finished_at
               = link_to activity_finish_path(activity), method: :patch, remote: :true do
-                %i.glyphicon.glyphicon-ok
+                %i.glyphicon.glyphicon-pause
+            - else
+              = link_to activity_resume_path(activity),method: :patch, remote: :true do
+                %i.glyphicon.glyphicon-play
           %td
             = link_to activity_path(activity), method: :delete, remote: true do
               %i.glyphicon.glyphicon-remove

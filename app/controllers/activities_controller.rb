@@ -38,6 +38,12 @@ class ActivitiesController < ApplicationController
     render json: { redirect_to: activities_path }
   end
 
+  def resume
+    @activity = current_user.activities.find_by_id params[:activity_id]
+    @activity.resume!
+    render json: { redirect_to: activities_path }
+  end
+
   def tags
     @tags = ActsAsTaggableOn::Tag.where("tags.name ILIKE ?", "%#{params[:term]}%")
     respond_to do |format|
